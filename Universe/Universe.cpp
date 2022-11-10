@@ -31,3 +31,8 @@ std::vector<Void> &Universe::GetSpace()
 {
     return Space;
 }
+
+unsigned int Universe::GetSize()
+{
+    return Space.size();
+}

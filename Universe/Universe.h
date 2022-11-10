@@ -19,6 +19,8 @@ public:
 
     std::vector<Void>& GetSpace();
 
+    unsigned int GetSize();
+
 private:
 
     std::vector<Void> Space;
