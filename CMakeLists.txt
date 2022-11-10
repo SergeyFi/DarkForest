@@ -3,4 +3,10 @@ project(DarkForest)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(DarkForest main.cpp)
+add_executable(
+        DarkForest
+        main.cpp
+        Void/Void.cpp
+        Void/Void.h
+        Universe/Universe.cpp
+        Universe/Universe.h)
