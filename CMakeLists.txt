@@ -11,4 +11,6 @@ add_executable(
         Universe/Universe.cpp
         Universe/Universe.h
         Civilization/Civilization.cpp
-        Civilization/Civilization.h)
+        Civilization/Civilization.h
+        CycleActions/CycleAction.cpp
+        CycleActions/CycleAction.h)
