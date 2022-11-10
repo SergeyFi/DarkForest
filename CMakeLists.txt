@@ -9,4 +9,6 @@ add_executable(
         Void/Void.cpp
         Void/Void.h
         Universe/Universe.cpp
-        Universe/Universe.h)
+        Universe/Universe.h
+        Civilization/Civilization.cpp
+        Civilization/Civilization.h)

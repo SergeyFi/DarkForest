@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Void/Void.h"
+#include "../Civilization/Civilization.h"
 #include <vector>
 
 class Universe
@@ -11,4 +12,5 @@ public:
 private:
 
     std::vector<Void> Space;
+    std::vector<Civilization> Civilizations;
 };
