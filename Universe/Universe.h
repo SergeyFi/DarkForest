@@ -11,14 +11,18 @@ class CycleAction;
 class Universe
 {
 public:
-    explicit Universe(unsigned int Size, unsigned int Cycles, std::vector<std::unique_ptr<CycleAction>> NewActions);
+    explicit Universe(unsigned int Size, unsigned int Cycles, std::vector<std::unique_ptr<CycleAction>>& NewActions);
 
     void StartSimulation();
+
+    void AddCivilization(std::unique_ptr<Civilization>& Civilization, unsigned int Location);
+
+    std::vector<Void>& GetSpace();
 
 private:
 
     std::vector<Void> Space;
-    std::vector<Civilization> Civilizations;
+    std::vector<std::unique_ptr<Civilization>> Civilizations;
     std::vector<std::unique_ptr<CycleAction>> Actions;
 
     unsigned int CyclesMax;

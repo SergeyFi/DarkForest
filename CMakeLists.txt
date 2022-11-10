@@ -13,4 +13,6 @@ add_executable(
         Civilization/Civilization.cpp
         Civilization/Civilization.h
         CycleActions/CycleAction.cpp
-        CycleActions/CycleAction.h)
+        CycleActions/CycleAction.h
+        CycleActions/CivilizationGeneration.cpp
+        CycleActions/CivilizationGeneration.h)

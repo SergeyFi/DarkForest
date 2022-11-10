@@ -6,4 +6,6 @@ class CycleAction
 {
 public:
     virtual void Action(Universe* Universe) = 0;
+
+    virtual ~CycleAction() = default;
 };

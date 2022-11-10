@@ -1,6 +1,6 @@
 #pragma once
 
-class Civilization
+struct Civilization
 {
     unsigned int Age = 0;
 };
