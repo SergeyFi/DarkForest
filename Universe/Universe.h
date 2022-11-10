@@ -19,7 +19,9 @@ public:
 
     std::vector<Void>& GetSpace();
 
-    unsigned int GetSize();
+    unsigned int GetSize() const;
+
+    unsigned int GetCurrentCycle() const;
 
 private:
 

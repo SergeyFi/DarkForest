@@ -12,7 +12,7 @@ Universe::Universe(unsigned int Size, unsigned int Cycles, std::vector<std::uniq
 
 void Universe::StartSimulation()
 {
-    Logger::Print("Simulation is started !");
+    Logger::Print("Simulation is started.");
 
     while (CyclesCurrent < CyclesMax)
     {
@@ -24,7 +24,7 @@ void Universe::StartSimulation()
         ++CyclesCurrent;
     }
 
-    Logger::Print("Simulation is finished !");
+    Logger::Print("Simulation is finished.");
 }
 
 void Universe::AddCivilization(std::unique_ptr<Civilization>& Civilization, unsigned int Location)
@@ -37,7 +37,12 @@ std::vector<Void> &Universe::GetSpace()
     return Space;
 }
 
-unsigned int Universe::GetSize()
+unsigned int Universe::GetSize() const
 {
     return Space.size();
+}
+
+unsigned int Universe::GetCurrentCycle() const
+{
+    return CyclesCurrent;
 }

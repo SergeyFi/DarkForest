@@ -5,8 +5,8 @@
 int main()
 {
     std::vector<std::unique_ptr<CycleAction>> Actions;
-    Actions.emplace_back(std::make_unique<CivilizationGeneration>(0.1f));
+    Actions.emplace_back(std::make_unique<CivilizationGeneration>(0.0001f));
 
-    Universe FirstUniverse(100000, 10000, Actions);
+    Universe FirstUniverse(10000000, 100000, Actions);
     FirstUniverse.StartSimulation();
 }

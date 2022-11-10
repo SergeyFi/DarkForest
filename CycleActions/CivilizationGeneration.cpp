@@ -1,5 +1,6 @@
 #include "CivilizationGeneration.h"
 #include "../Tools/Randomizer.h"
+#include "../Tools/Logger.h"
 
 CivilizationGeneration::CivilizationGeneration(double GenerationProbability)
 {
@@ -15,5 +16,7 @@ void CivilizationGeneration::Action(Universe* Universe)
         std::unique_ptr<Civilization> NewCivilization;
 
         Universe->AddCivilization(NewCivilization, Randomizer::RandRange(0, Universe->GetSize()));
+
+        Logger::Print("Civilization was born: " + std::to_string( Universe->GetCurrentCycle()) + " cycle");
     }
 }
