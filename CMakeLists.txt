@@ -15,4 +15,6 @@ add_executable(
         CycleActions/CycleAction.cpp
         CycleActions/CycleAction.h
         CycleActions/CivilizationGeneration.cpp
-        CycleActions/CivilizationGeneration.h)
+        CycleActions/CivilizationGeneration.h
+        Tools/Randomizer.cpp
+        Tools/Randomizer.h)
