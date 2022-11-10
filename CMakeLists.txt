@@ -17,4 +17,6 @@ add_executable(
         CycleActions/CivilizationGeneration.cpp
         CycleActions/CivilizationGeneration.h
         Tools/Randomizer.cpp
-        Tools/Randomizer.h)
+        Tools/Randomizer.h
+        Tools/Logger.cpp
+        Tools/Logger.h)

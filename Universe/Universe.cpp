@@ -1,5 +1,6 @@
 #include "Universe.h"
 #include "../CycleActions/CycleAction.h"
+#include "../Tools/Logger.h"
 
 Universe::Universe(unsigned int Size, unsigned int Cycles, std::vector<std::unique_ptr<CycleAction>>& NewActions)
 {
@@ -11,6 +12,8 @@ Universe::Universe(unsigned int Size, unsigned int Cycles, std::vector<std::uniq
 
 void Universe::StartSimulation()
 {
+    Logger::Print("Simulation is started !");
+
     while (CyclesCurrent < CyclesMax)
     {
         for (auto& Action : Actions)
@@ -20,6 +23,8 @@ void Universe::StartSimulation()
 
         ++CyclesCurrent;
     }
+
+    Logger::Print("Simulation is finished !");
 }
 
 void Universe::AddCivilization(std::unique_ptr<Civilization>& Civilization, unsigned int Location)
