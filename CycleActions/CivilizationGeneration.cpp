@@ -13,10 +13,10 @@ void CivilizationGeneration::Action(Universe* Universe)
 
     if (Chance <= Probability)
     {
-        std::unique_ptr<Civilization> NewCivilization;
-
-        Universe->AddCivilization(NewCivilization, Randomizer::RandRange(0, Universe->GetSize()));
+        std::unique_ptr<Civilization> NewCivilization = std::make_unique<Civilization>();
 
         Logger::Print("Civilization was born: " + std::to_string( Universe->GetCurrentCycle()) + " cycle");
+
+        Universe->AddCivilization(NewCivilization, Randomizer::RandRangeUnsigned(0, Universe->GetSize()));
     }
 }
