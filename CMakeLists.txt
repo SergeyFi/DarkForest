@@ -3,6 +3,8 @@ project(DarkForest)
 
 set(CMAKE_CXX_STANDARD 17)
 
+find_package(SFML 2.5 COMPONENTS graphics REQUIRED)
+
 add_executable(
         DarkForest
         main.cpp
@@ -19,4 +21,8 @@ add_executable(
         Tools/Randomizer.cpp
         Tools/Randomizer.h
         Tools/Logger.cpp
-        Tools/Logger.h CycleActions/CivilizationGrowth.cpp CycleActions/CivilizationGrowth.h)
+        Tools/Logger.h
+        CycleActions/CivilizationGrowth.cpp
+        CycleActions/CivilizationGrowth.h)
+
+target_link_libraries(DarkForest sfml-graphics)
