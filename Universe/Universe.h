@@ -19,6 +19,8 @@ public:
 
     std::vector<Void>& GetVoids();
 
+    std::vector<std::unique_ptr<Civilization>>& GetCivilizations();
+
     unsigned int GetSize() const;
 
     unsigned int GetCurrentCycle() const;

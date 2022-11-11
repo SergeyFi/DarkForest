@@ -63,3 +63,8 @@ unsigned int Universe::GetCurrentCycle() const
 {
     return CyclesCurrent;
 }
+
+std::vector<std::unique_ptr<Civilization>>& Universe::GetCivilizations()
+{
+    return Civilizations;
+}

@@ -19,4 +19,4 @@ add_executable(
         Tools/Randomizer.cpp
         Tools/Randomizer.h
         Tools/Logger.cpp
-        Tools/Logger.h)
+        Tools/Logger.h CycleActions/CivilizationGrowth.cpp CycleActions/CivilizationGrowth.h)
