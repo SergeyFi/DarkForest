@@ -49,7 +49,7 @@ void Universe::AddCivilization(std::unique_ptr<Civilization>& Civilization, unsi
     Space[Location].Civilization = Civilizations.back().get();
 }
 
-std::vector<Void> &Universe::GetSpace()
+std::vector<Void> &Universe::GetVoids()
 {
     return Space;
 }

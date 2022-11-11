@@ -17,7 +17,7 @@ public:
 
     void AddCivilization(std::unique_ptr<Civilization>& Civilization, unsigned int Location);
 
-    std::vector<Void>& GetSpace();
+    std::vector<Void>& GetVoids();
 
     unsigned int GetSize() const;
 
