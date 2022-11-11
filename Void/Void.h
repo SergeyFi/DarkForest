@@ -3,6 +3,6 @@
 
 struct Void
 {
-    Civilization* Civilization = nullptr;
+    struct Civilization* Civilization = nullptr;
 };
 
