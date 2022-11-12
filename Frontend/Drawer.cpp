@@ -34,13 +34,14 @@ void Drawer::DrawUniverse(sf::RenderWindow& Window)
     {
         sf::RectangleShape VoidShape({VoidSize, 100.0f});
 
-        if (i % 2)
+        if (Universe->GetVoids()[i].Civilization)
         {
-            VoidShape.setFillColor({130, 170, 255});
+            auto CivColor = Universe->GetVoids()[i].Civilization->Color;
+            VoidShape.setFillColor({CivColor.R, CivColor.G, CivColor.B});
         }
         else
         {
-            VoidShape.setFillColor({156, 196, 255});
+            VoidShape.setFillColor({130, 170, 255});
         }
 
         VoidShape.setPosition(Position, float(Window.getSize().y) / 2);
