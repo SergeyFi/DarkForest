@@ -16,3 +16,8 @@ void Drawer::StartDrawLoop()
         window.display();
     }
 }
+
+Drawer::Drawer(struct Universe* Universe)
+{
+    this->Universe = Universe;
+}
