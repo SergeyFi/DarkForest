@@ -11,6 +11,7 @@ int main()
     Actions.emplace_back(std::make_unique<CivilizationGrowth>());
 
     Universe FirstUniverse(10000, 100, Actions);
+    FirstUniverse.SetCycleSleepTime(100);
 
     Drawer UniverseDrawer;
     std::thread DrawerThread(&Drawer::StartDrawLoop, &UniverseDrawer);

@@ -1,6 +1,8 @@
 #include "Universe.h"
 #include "../CycleActions/CycleAction.h"
 #include "../Tools/Logger.h"
+#include <thread>
+#include <chrono>
 
 Universe::Universe(unsigned int Size, unsigned int Cycles, std::vector<std::unique_ptr<CycleAction>>& NewActions)
 {
@@ -22,6 +24,8 @@ void Universe::StartSimulation()
         }
 
         ++CyclesCurrent;
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(CycleSleepTime));
     }
 
     Logger::Print("Simulation is finished.");
@@ -67,4 +71,9 @@ unsigned int Universe::GetCurrentCycle() const
 std::vector<std::unique_ptr<Civilization>>& Universe::GetCivilizations()
 {
     return Civilizations;
+}
+
+void Universe::SetCycleSleepTime(unsigned int Milliseconds)
+{
+    CycleSleepTime = Milliseconds;
 }

@@ -25,6 +25,8 @@ public:
 
     unsigned int GetCurrentCycle() const;
 
+    void SetCycleSleepTime(unsigned int Milliseconds);
+
 private:
 
     std::vector<Void> Space;
@@ -33,4 +35,6 @@ private:
 
     unsigned int CyclesMax;
     unsigned int CyclesCurrent;
+
+    unsigned int CycleSleepTime = 0;
 };
