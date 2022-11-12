@@ -13,6 +13,12 @@ void CivilizationGeneration::Action(class Universe* Universe,std::vector<Void>& 
 
     if (Chance <= Probability)
     {
+        auto Location = Randomizer::RandRangeUnsigned(0, Universe->GetSize());
+        if (Voids[Location].Civilization != nullptr)
+        {
+            return;
+        }
+
         std::unique_ptr<Civilization> NewCivilization = std::make_unique<Civilization>();
         NewCivilization->Color.R = Randomizer::RandRange(0.0f, 255.0f);
         NewCivilization->Color.G = Randomizer::RandRange(0.0f, 255.0f);
@@ -20,7 +26,7 @@ void CivilizationGeneration::Action(class Universe* Universe,std::vector<Void>& 
 
         Logger::Print("Civilization was born: " + std::to_string( Universe->GetCurrentCycle()) + " cycle");
 
-        auto Location = Randomizer::RandRangeUnsigned(0, Universe->GetSize());
+
 
         Civilizations.emplace_back(std::move(NewCivilization));
 

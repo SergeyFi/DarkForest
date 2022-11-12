@@ -1,32 +1,30 @@
 #include "CivilizationGrowth.h"
 
+
 void CivilizationGrowth::Action(class Universe* Universe,std::vector<Void>& Voids, std::vector<std::unique_ptr<Civilization>>& Civilizations)
 {
     for (auto& Civilization : Civilizations)
     {
-        auto LeftVoid = Voids[Civilization->BorderLeft];
+        auto& LeftVoid = Voids[Civilization->BorderLeft];
+        auto& RightVoid = Voids[Civilization->BorderRight];
 
         if (LeftVoid.Civilization == nullptr)
         {
-            LeftVoid.Civilization = Civilization.get();
+            Voids[Civilization->BorderLeft].Civilization = Civilization.get();
 
-            if (Civilization->BorderLeft > 0)
+            if (Civilization->BorderLeft != 0)
             {
                 Civilization->BorderLeft -= 1;
             }
         }
-        else
+
+        if (RightVoid.Civilization == nullptr)
         {
-            auto RightVoid = Voids[Civilization->BorderLeft];
+            Voids[Civilization->BorderRight].Civilization = Civilization.get();
 
-            if (RightVoid.Civilization == nullptr)
+            if (Civilization->BorderRight != Universe->GetSize())
             {
-                RightVoid.Civilization = Civilization.get();
-
-                if (Civilization->BorderRight < Voids.size())
-                {
-                    Civilization->BorderRight += 1;
-                }
+                Civilization->BorderRight += 1;
             }
         }
     }

@@ -3,16 +3,18 @@
 #include "CycleActions/CivilizationGrowth.h"
 #include "Frontend/Drawer.h"
 #include <thread>
+#include <chrono>
 
 int main()
 {
     // Setup universe
     std::vector<std::unique_ptr<CycleAction>> Actions;
-    Actions.emplace_back(std::make_unique<CivilizationGeneration>(0.05f));
     Actions.emplace_back(std::make_unique<CivilizationGrowth>());
+    Actions.emplace_back(std::make_unique<CivilizationGeneration>(0.01f));
 
-    Universe FirstUniverse(300, 10000, Actions);
-    FirstUniverse.SetCycleSleepTime(100);
+
+    Universe FirstUniverse(1000, 100000, Actions);
+    FirstUniverse.SetCycleSleepTime(0);
 
     // Draw thread
     Drawer UniverseDrawer(&FirstUniverse);
@@ -21,4 +23,6 @@ int main()
 
     // Start simulation
     FirstUniverse.StartSimulation();
+
+    std::this_thread::sleep_for(std::chrono::seconds(300));
 }
