@@ -53,9 +53,14 @@ void Universe::AddCivilization(std::unique_ptr<Civilization>& Civilization, unsi
     Voids[Location].Civilization = Civilizations.back().get();
 }
 
-std::vector<Void> &Universe::GetVoids()
+const std::vector<Void>& Universe::GetVoids() const
 {
     return Voids;
+}
+
+const std::vector<std::unique_ptr<Civilization>>& Universe::GetCivilizations() const
+{
+    return Civilizations;
 }
 
 unsigned int Universe::GetSize() const
@@ -66,11 +71,6 @@ unsigned int Universe::GetSize() const
 unsigned int Universe::GetCurrentCycle() const
 {
     return CyclesCurrent;
-}
-
-std::vector<std::unique_ptr<Civilization>>& Universe::GetCivilizations()
-{
-    return Civilizations;
 }
 
 void Universe::SetCycleSleepTime(unsigned int Milliseconds)

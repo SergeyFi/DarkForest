@@ -17,9 +17,9 @@ public:
 
     void AddCivilization(std::unique_ptr<Civilization>& Civilization, unsigned int Location);
 
-    std::vector<Void>& GetVoids();
+    const std::vector<Void>& GetVoids() const;
 
-    std::vector<std::unique_ptr<Civilization>>& GetCivilizations();
+    const std::vector<std::unique_ptr<Civilization>>& GetCivilizations() const;
 
     unsigned int GetSize() const;
 
@@ -35,6 +35,5 @@ private:
 
     unsigned int CyclesMax;
     unsigned int CyclesCurrent;
-
     unsigned int CycleSleepTime = 0;
 };

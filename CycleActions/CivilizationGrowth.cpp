@@ -2,9 +2,9 @@
 
 void CivilizationGrowth::Action(class Universe* Universe,std::vector<Void>& Voids, std::vector<std::unique_ptr<Civilization>>& Civilizations)
 {
-    for (auto& Civilization : Universe->GetCivilizations())
+    for (auto& Civilization : Civilizations)
     {
-        auto LeftVoid = Universe->GetVoids()[Civilization->BorderLeft];
+        auto LeftVoid = Voids[Civilization->BorderLeft];
 
         if (LeftVoid.Civilization == nullptr)
         {
@@ -17,13 +17,13 @@ void CivilizationGrowth::Action(class Universe* Universe,std::vector<Void>& Void
         }
         else
         {
-            auto RightVoid = Universe->GetVoids()[Civilization->BorderLeft];
+            auto RightVoid = Voids[Civilization->BorderLeft];
 
             if (RightVoid.Civilization == nullptr)
             {
                 RightVoid.Civilization = Civilization.get();
 
-                if (Civilization->BorderRight < Universe->GetSize())
+                if (Civilization->BorderRight < Voids.size())
                 {
                     Civilization->BorderRight += 1;
                 }
