@@ -15,8 +15,6 @@ public:
 
     void StartSimulation();
 
-    void AddCivilization(std::unique_ptr<Civilization>& Civilization, unsigned int Location);
-
     const std::vector<Void>& GetVoids() const;
 
     const std::vector<std::unique_ptr<Civilization>>& GetCivilizations() const;

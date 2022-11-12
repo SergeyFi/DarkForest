@@ -17,6 +17,25 @@ void CivilizationGeneration::Action(class Universe* Universe,std::vector<Void>& 
 
         Logger::Print("Civilization was born: " + std::to_string( Universe->GetCurrentCycle()) + " cycle");
 
-        Universe->AddCivilization(NewCivilization, Randomizer::RandRangeUnsigned(0, Universe->GetSize()));
+        auto Location = Randomizer::RandRangeUnsigned(0, Universe->GetSize());
+
+        Civilizations.emplace_back(std::move(NewCivilization));
+
+        unsigned int BorderLeft = Location - 1;
+        unsigned int BorderRight = Location + 1;
+
+        if (BorderLeft == -1)
+        {
+            BorderLeft = 0;
+        }
+
+        if (BorderRight >= Voids.size())
+        {
+            BorderRight = Location;
+        }
+
+        Civilizations.back()->BorderLeft = BorderLeft;
+        Civilizations.back()->BorderRight = BorderRight;
+        Voids[Location].Civilization = Civilizations.back().get();
     }
 }

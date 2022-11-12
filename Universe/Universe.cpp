@@ -31,28 +31,6 @@ void Universe::StartSimulation()
     Logger::Print("Simulation is finished.");
 }
 
-void Universe::AddCivilization(std::unique_ptr<Civilization>& Civilization, unsigned int Location)
-{
-    Civilizations.emplace_back(std::move(Civilization));
-
-    unsigned int BorderLeft = Location - 1;
-    unsigned int BorderRight = Location + 1;
-
-    if (BorderLeft == -1)
-    {
-        BorderLeft = 0;
-    }
-
-    if (BorderRight >= Voids.size())
-    {
-        BorderRight = Location;
-    }
-
-    Civilizations.back()->BorderLeft = BorderLeft;
-    Civilizations.back()->BorderRight = BorderRight;
-    Voids[Location].Civilization = Civilizations.back().get();
-}
-
 const std::vector<Void>& Universe::GetVoids() const
 {
     return Voids;
