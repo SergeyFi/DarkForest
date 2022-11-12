@@ -29,7 +29,7 @@ public:
 
 private:
 
-    std::vector<Void> Space;
+    std::vector<Void> Voids;
     std::vector<std::unique_ptr<Civilization>> Civilizations;
     std::vector<std::unique_ptr<CycleAction>> Actions;
 

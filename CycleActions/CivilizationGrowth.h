@@ -5,5 +5,5 @@
 class CivilizationGrowth: public CycleAction
 {
 public:
-    void Action(Universe* Universe) override;
+    void Action(class Universe* Universe,std::vector<Void>& Voids, std::vector<std::unique_ptr<Civilization>>& Civilizations) override;
 };

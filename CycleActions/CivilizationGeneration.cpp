@@ -7,7 +7,7 @@ CivilizationGeneration::CivilizationGeneration(double GenerationProbability)
     Probability = GenerationProbability;
 }
 
-void CivilizationGeneration::Action(Universe* Universe)
+void CivilizationGeneration::Action(class Universe* Universe,std::vector<Void>& Voids, std::vector<std::unique_ptr<Civilization>>& Civilizations)
 {
     auto Chance = Randomizer::RandRange(0.0f, 1.0f);
 

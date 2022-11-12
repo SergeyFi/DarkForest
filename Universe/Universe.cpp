@@ -6,7 +6,7 @@
 
 Universe::Universe(unsigned int Size, unsigned int Cycles, std::vector<std::unique_ptr<CycleAction>>& NewActions)
 {
-    Space = std::vector<Void>(Size);
+    Voids = std::vector<Void>(Size);
     Actions = std::move(NewActions);
     CyclesMax = Cycles;
     CyclesCurrent = 0;
@@ -20,7 +20,7 @@ void Universe::StartSimulation()
     {
         for (auto& Action : Actions)
         {
-            Action->Action(this);
+            Action->Action(this, Voids, Civilizations);
         }
 
         ++CyclesCurrent;
@@ -43,24 +43,24 @@ void Universe::AddCivilization(std::unique_ptr<Civilization>& Civilization, unsi
         BorderLeft = 0;
     }
 
-    if (BorderRight >= Space.size())
+    if (BorderRight >= Voids.size())
     {
         BorderRight = Location;
     }
 
     Civilizations.back()->BorderLeft = BorderLeft;
     Civilizations.back()->BorderRight = BorderRight;
-    Space[Location].Civilization = Civilizations.back().get();
+    Voids[Location].Civilization = Civilizations.back().get();
 }
 
 std::vector<Void> &Universe::GetVoids()
 {
-    return Space;
+    return Voids;
 }
 
 unsigned int Universe::GetSize() const
 {
-    return Space.size();
+    return Voids.size();
 }
 
 unsigned int Universe::GetCurrentCycle() const

@@ -1,6 +1,6 @@
 #include "CivilizationGrowth.h"
 
-void CivilizationGrowth::Action(Universe* Universe)
+void CivilizationGrowth::Action(class Universe* Universe,std::vector<Void>& Voids, std::vector<std::unique_ptr<Civilization>>& Civilizations)
 {
     for (auto& Civilization : Universe->GetCivilizations())
     {
