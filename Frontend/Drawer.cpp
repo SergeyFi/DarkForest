@@ -1,23 +1,52 @@
 #include "Drawer.h"
-#include "SFML/Graphics.hpp"
 #include <thread>
 #include <chrono>
-
-void Drawer::StartDrawLoop()
-{
-    sf::RenderWindow window(sf::VideoMode(2000, 1000), "DarkForest", sf::Style::Fullscreen);
-
-    while (window.isOpen())
-    {
-        std::this_thread::sleep_for(std::chrono::milliseconds(16));
-
-        window.clear({41, 46, 62});
-
-        window.display();
-    }
-}
+#include "../Tools/Logger.h"
 
 Drawer::Drawer(struct Universe* Universe)
 {
     this->Universe = Universe;
+}
+
+void Drawer::StartDrawLoop()
+{
+    sf::RenderWindow Window(sf::VideoMode(), "DarkForest", sf::Style::Fullscreen);
+
+    while (Window.isOpen())
+    {
+        std::this_thread::sleep_for(std::chrono::milliseconds(16));
+
+        Window.clear({41, 46, 62});
+
+        DrawUniverse(Window);
+
+        Window.display();
+    }
+}
+
+void Drawer::DrawUniverse(sf::RenderWindow& Window)
+{
+    float Position = 0;
+
+    auto VoidSize = float(Window.getSize().x) / float(Universe->GetSize());
+
+    for (auto i = 0; i < Universe->GetSize(); ++i)
+    {
+        sf::RectangleShape VoidShape({VoidSize, 100.0f});
+
+        if (i % 2)
+        {
+            VoidShape.setFillColor({130, 170, 255});
+        }
+        else
+        {
+            VoidShape.setFillColor({156, 196, 255});
+        }
+
+        VoidShape.setPosition(Position, float(Window.getSize().y) / 2);
+
+        Window.draw(VoidShape);
+
+        Position += VoidSize;
+    }
 }

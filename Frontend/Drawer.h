@@ -1,5 +1,6 @@
 #pragma once
 #include "../Universe/Universe.h"
+#include "SFML/Graphics.hpp"
 
 class Drawer
 {
@@ -11,4 +12,6 @@ public:
 private:
 
     class Universe* Universe;
+
+    void DrawUniverse(sf::RenderWindow& Window);
 };
