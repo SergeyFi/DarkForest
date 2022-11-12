@@ -23,6 +23,8 @@ add_executable(
         Tools/Logger.cpp
         Tools/Logger.h
         CycleActions/CivilizationGrowth.cpp
-        CycleActions/CivilizationGrowth.h)
+        CycleActions/CivilizationGrowth.h
+        Frontend/Drawer.cpp
+        Frontend/Drawer.h)
 
 target_link_libraries(DarkForest sfml-graphics)
