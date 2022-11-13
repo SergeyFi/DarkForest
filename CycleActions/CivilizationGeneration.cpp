@@ -20,12 +20,11 @@ void CivilizationGeneration::Action(class Universe* Universe,std::vector<Void>& 
         }
 
         std::unique_ptr<Civilization> NewCivilization = std::make_unique<Civilization>();
-        NewCivilization->Color.R = Randomizer::RandRange(0.0f, 255.0f);
-        NewCivilization->Color.G = Randomizer::RandRange(0.0f, 255.0f);
-        NewCivilization->Color.B = Randomizer::RandRange(0.0f, 255.0f);
+        NewCivilization->Color.Red = Randomizer::RandRange(0.0f, 255.0f);
+        NewCivilization->Color.Green = Randomizer::RandRange(0.0f, 255.0f);
+        NewCivilization->Color.Blue = Randomizer::RandRange(0.0f, 255.0f);
 
         Logger::Print("Civilization was born: " + std::to_string( Universe->GetCurrentCycle()) + " cycle");
-
 
 
         Civilizations.emplace_back(std::move(NewCivilization));

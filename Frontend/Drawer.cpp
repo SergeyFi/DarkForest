@@ -39,7 +39,7 @@ void Drawer::DrawUniverse(sf::RenderWindow& Window)
         else
         {
             auto CivColor = Universe->GetVoids()[i].Civilization->Color;
-            Image.setPixel(i, 0, {CivColor.R, CivColor.G, CivColor.B});
+            Image.setPixel(i, 0, {CivColor.Red, CivColor.Green, CivColor.Blue});
         }
     }
 

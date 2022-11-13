@@ -25,6 +25,7 @@ add_executable(
         CycleActions/CivilizationGrowth.cpp
         CycleActions/CivilizationGrowth.h
         Frontend/Drawer.cpp
-        Frontend/Drawer.h)
+        Frontend/Drawer.h
+        Color/Color.h)
 
 target_link_libraries(DarkForest sfml-graphics)

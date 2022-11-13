@@ -1,11 +1,6 @@
 #pragma once
+#include "../Color/Color.h"
 
-struct Color
-{
-    unsigned char R = 0;
-    unsigned char G = 0;
-    unsigned char B = 0;
-};
 
 struct Civilization
 {

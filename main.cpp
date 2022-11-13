@@ -12,7 +12,6 @@ int main()
     Actions.emplace_back(std::make_unique<CivilizationGrowth>());
     Actions.emplace_back(std::make_unique<CivilizationGeneration>(0.001f));
 
-
     Universe FirstUniverse(100000, 100000, Actions);
     FirstUniverse.SetCycleSleepTime(1);
 
