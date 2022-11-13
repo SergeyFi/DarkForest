@@ -14,4 +14,6 @@ private:
     class Universe* Universe;
 
     void DrawUniverse(sf::RenderWindow& Window);
+
+    const int TextureSizeMax = 16384;
 };

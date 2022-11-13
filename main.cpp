@@ -10,11 +10,11 @@ int main()
     // Setup universe
     std::vector<std::unique_ptr<CycleAction>> Actions;
     Actions.emplace_back(std::make_unique<CivilizationGrowth>());
-    Actions.emplace_back(std::make_unique<CivilizationGeneration>(0.01f));
+    Actions.emplace_back(std::make_unique<CivilizationGeneration>(0.001f));
 
 
-    Universe FirstUniverse(1000, 100000, Actions);
-    FirstUniverse.SetCycleSleepTime(0);
+    Universe FirstUniverse(100000, 100000, Actions);
+    FirstUniverse.SetCycleSleepTime(1);
 
     // Draw thread
     Drawer UniverseDrawer(&FirstUniverse);

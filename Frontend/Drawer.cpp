@@ -1,7 +1,8 @@
 #include "Drawer.h"
 #include <thread>
 #include <chrono>
-#include "../Tools/Logger.h"
+#include <cmath>
+
 
 Drawer::Drawer(struct Universe* Universe)
 {
@@ -26,28 +27,34 @@ void Drawer::StartDrawLoop()
 
 void Drawer::DrawUniverse(sf::RenderWindow& Window)
 {
-    float Position = 0;
-
-    auto VoidSize = float(Window.getSize().x) / float(Universe->GetSize());
+    sf::Image Image;
+    Image.create(Universe->GetSize(), 1, sf::Color::Black);
 
     for (auto i = 0; i < Universe->GetSize(); ++i)
     {
-        sf::RectangleShape VoidShape({VoidSize, 100.0f});
-
-        if (Universe->GetVoids()[i].Civilization)
+        if (Universe->GetVoids()[i].Civilization == nullptr)
         {
-            auto CivColor = Universe->GetVoids()[i].Civilization->Color;
-            VoidShape.setFillColor({CivColor.R, CivColor.G, CivColor.B});
+            Image.setPixel(i, 0, {130, 170, 255});
         }
         else
         {
-            VoidShape.setFillColor({130, 170, 255});
+            auto CivColor = Universe->GetVoids()[i].Civilization->Color;
+            Image.setPixel(i, 0, {CivColor.R, CivColor.G, CivColor.B});
         }
+    }
 
-        VoidShape.setPosition(Position, float(Window.getSize().y) / 2);
+    for (auto i = 0; i < std::ceil(Universe->GetSize() / float(TextureSizeMax)); ++i)
+    {
+        sf::Texture Texture;
+        Texture.loadFromImage(Image, {i * TextureSizeMax, 0, TextureSizeMax, 1});
 
-        Window.draw(VoidShape);
+        auto VoidSize = float(Window.getSize().x) / float(Universe->GetSize());
 
-        Position += VoidSize;
+        sf::Sprite Sprite;
+        Sprite.setTexture(Texture);
+        Sprite.scale(VoidSize, 80.0f);
+        Sprite.setPosition(i * VoidSize * TextureSizeMax, float(Window.getSize().y) / 2);
+
+        Window.draw(Sprite);
     }
 }
