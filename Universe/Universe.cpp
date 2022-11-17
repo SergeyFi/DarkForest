@@ -25,7 +25,7 @@ void Universe::StartSimulation()
 
         ++CyclesCurrent;
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(CycleSleepTime));
+        std::this_thread::sleep_for(std::chrono::microseconds(CycleSleepTime));
     }
 
     Logger::Print("Simulation is finished.");
@@ -51,7 +51,7 @@ unsigned int Universe::GetCurrentCycle() const
     return CyclesCurrent;
 }
 
-void Universe::SetCycleSleepTime(unsigned int Milliseconds)
+void Universe::SetCycleSleepTime(unsigned int SleepTime)
 {
-    CycleSleepTime = Milliseconds;
+    CycleSleepTime = SleepTime;
 }

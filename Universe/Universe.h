@@ -23,7 +23,7 @@ public:
 
     unsigned int GetCurrentCycle() const;
 
-    void SetCycleSleepTime(unsigned int Milliseconds);
+    void SetCycleSleepTime(unsigned int SleepTime);
 
 private:
 
