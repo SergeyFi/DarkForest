@@ -29,7 +29,7 @@ void Drawer::StartDrawLoop()
 void Drawer::DrawUniverse(sf::RenderWindow& Window)
 {
     sf::Image Image;
-    Image.create(Universe->GetSize().X, Universe->GetSize().Y, {31, 36, 52});
+    Image.create(Universe->GetSize().X, Universe->GetSize().Y, {26, 31, 47});
 
     for (auto x = 0; x < Universe->GetSize().X; ++x)
     {
