@@ -13,8 +13,8 @@ void CivilizationGeneration::Action(class Universe* Universe, FVoidsData& Voids,
 
     if (Chance <= Probability)
     {
-        auto X = Randomizer::RandRangeUnsigned(0, Universe->GetSize().X);
-        auto Y= Randomizer::RandRangeUnsigned(0, Universe->GetSize().Y);
+        auto X = Randomizer::RandRangeUnsigned(0, Universe->GetSize().X - 1);
+        auto Y= Randomizer::RandRangeUnsigned(0, Universe->GetSize().Y - 1);
 
         if (Voids.Voids[X][Y].Civilization != nullptr)
         {
