@@ -13,6 +13,22 @@ void CivilizationGeneration::Action(class Universe* Universe, FVoidsData& Voids,
 
     if (Chance <= Probability)
     {
+        auto X = Randomizer::RandRangeUnsigned(0, Universe->GetSize().X);
+        auto Y= Randomizer::RandRangeUnsigned(0, Universe->GetSize().Y);
 
+        if (Voids.Voids[X][Y].Civilization != nullptr)
+        {
+            return;
+        }
+
+        std::unique_ptr<Civilization> NewCivilization = std::make_unique<Civilization>();
+        NewCivilization->Color.Red = Randomizer::RandRange(0.0f, 255.0f);
+        NewCivilization->Color.Green = Randomizer::RandRange(0.0f, 255.0f);
+        NewCivilization->Color.Blue = Randomizer::RandRange(0.0f, 255.0f);
+
+        Civilizations.Civilizations.emplace_back(std::move(NewCivilization));
+        Voids.Voids[X][Y].Civilization = NewCivilization.get();
+
+        Logger::Print("Civilization was born: " + std::to_string( Universe->GetCyclesData().CyclesCurrent) + " cycle");
     }
 }

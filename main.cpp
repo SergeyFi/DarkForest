@@ -1,6 +1,5 @@
 #include "Universe/Universe.h"
 #include "CycleActions/CivilizationGeneration.h"
-#include "CycleActions/CivilizationGrowth.h"
 #include "Frontend/Drawer.h"
 #include <thread>
 #include <chrono>
@@ -9,7 +8,6 @@ int main()
 {
     // Setup universe
     FActionsData ActionsData;
-    ActionsData.Actions.emplace_back(std::make_unique<CivilizationGrowth>());
     ActionsData.Actions.emplace_back(std::make_unique<CivilizationGeneration>(0.001f));
 
     Universe FirstUniverse({1000, 1000}, 100000, ActionsData);
