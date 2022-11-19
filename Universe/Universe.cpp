@@ -1,29 +1,28 @@
 #include "Universe.h"
-#include "../CycleActions/CycleAction.h"
 #include "../Tools/Logger.h"
+#include "../CycleActions/CycleAction.h"
 #include <thread>
 #include <chrono>
 
-Universe::Universe(unsigned int Size, unsigned int Cycles, std::vector<std::unique_ptr<CycleAction>>& NewActions)
+Universe::Universe(FVector2D Size, unsigned int Cycles, struct FActionsData& NewActions)
 {
-    Voids = std::vector<Void>(Size);
-    Actions = std::move(NewActions);
-    CyclesMax = Cycles;
-    CyclesCurrent = 0;
+    VoidsData = {std::vector<std::vector<Void>>(Size.X, std::vector<Void>(Size.Y))};
+    ActionsData = std::move(NewActions);
+    CyclesData.CyclesMax = Cycles;
 }
 
 void Universe::StartSimulation()
 {
     Logger::Print("Simulation is started.");
 
-    while (CyclesCurrent < CyclesMax)
+    while (CyclesData.CyclesCurrent < CyclesData.CyclesMax)
     {
-        for (auto& Action : Actions)
+        for (auto& Action : ActionsData.Actions)
         {
-            Action->Action(this, Voids, Civilizations);
+            Action->Action(this, VoidsData, CivilizationsData);
         }
 
-        ++CyclesCurrent;
+        ++CyclesData.CyclesCurrent;
 
         std::this_thread::sleep_for(std::chrono::microseconds(CycleSleepTime));
     }
@@ -31,24 +30,25 @@ void Universe::StartSimulation()
     Logger::Print("Simulation is finished.");
 }
 
-const std::vector<Void>& Universe::GetVoids() const
+const FVoidsData& Universe::GetVoids() const
 {
-    return Voids;
+    return VoidsData;
 }
 
-const std::vector<std::unique_ptr<Civilization>>& Universe::GetCivilizations() const
+const FCivilizationsData& Universe::GetCivilizations() const
 {
-    return Civilizations;
+    return CivilizationsData;
 }
 
-unsigned int Universe::GetSize() const
+FVector2D Universe::GetSize() const
 {
-    return Voids.size();
+    return {static_cast<unsigned int>(VoidsData.Voids.size()),
+            static_cast<unsigned int>(VoidsData.Voids.back().size())};
 }
 
-unsigned int Universe::GetCurrentCycle() const
+const FCyclesData& Universe::GetCyclesData() const
 {
-    return CyclesCurrent;
+    return CyclesData;
 }
 
 void Universe::SetCycleSleepTime(unsigned int SleepTime)

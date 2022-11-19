@@ -5,33 +5,56 @@
 #include <vector>
 #include <memory>
 
+struct FVector2D
+{
+    unsigned int X = 0;
+    unsigned int Y = 0;
+};
 
-class CycleAction;
+struct FVoidsData
+{
+    std::vector<std::vector<Void>> Voids;
+};
+
+struct FActionsData
+{
+    std::vector<std::unique_ptr<class CycleAction>> Actions;
+};
+
+struct FCivilizationsData
+{
+    std::vector<std::unique_ptr<Civilization>> Civilizations;
+};
+
+struct FCyclesData
+{
+    unsigned int CyclesCurrent = 0;
+    unsigned int CyclesMax = 0;
+};
 
 class Universe
 {
 public:
-    explicit Universe(unsigned int Size, unsigned int Cycles, std::vector<std::unique_ptr<CycleAction>>& NewActions);
+    explicit Universe(FVector2D Size, unsigned int Cycles, struct FActionsData& NewActions);
 
     void StartSimulation();
 
-    const std::vector<Void>& GetVoids() const;
+    const FVoidsData& GetVoids() const;
 
-    const std::vector<std::unique_ptr<Civilization>>& GetCivilizations() const;
+    const FCivilizationsData& GetCivilizations() const;
 
-    unsigned int GetSize() const;
+    FVector2D GetSize() const;
 
-    unsigned int GetCurrentCycle() const;
+    const FCyclesData& GetCyclesData() const;
 
     void SetCycleSleepTime(unsigned int SleepTime);
 
 private:
 
-    std::vector<Void> Voids;
-    std::vector<std::unique_ptr<Civilization>> Civilizations;
-    std::vector<std::unique_ptr<CycleAction>> Actions;
+    FVoidsData VoidsData;
+    FCivilizationsData CivilizationsData;
+    FActionsData ActionsData;
+    FCyclesData CyclesData;
 
-    unsigned int CyclesMax;
-    unsigned int CyclesCurrent;
     unsigned int CycleSleepTime = 0;
 };
