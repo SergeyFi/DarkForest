@@ -12,11 +12,9 @@ double Randomizer::RandRange(double Start, double End)
 
 unsigned int Randomizer::RandRangeUnsigned(unsigned int Start, unsigned int End)
 {
-    std::uniform_int_distribution<int> dist(int(Start/2), int(End/2));
-    std::uniform_int_distribution<int> dist2(int(Start/2), int(End/2));
+    std::uniform_int_distribution<long long int> dist(Start, End);
 
     auto a = dist(MTRandomGenerator);
-    auto b = dist2(MTRandomGenerator);
 
-    return a + b;
+    return a;
 }
