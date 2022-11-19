@@ -26,8 +26,8 @@ void CivilizationGeneration::Action(class Universe* Universe, FVoidsData& Voids,
         NewCivilization->Color.Green = Randomizer::RandRange(0.0f, 255.0f);
         NewCivilization->Color.Blue = Randomizer::RandRange(0.0f, 255.0f);
 
-        Civilizations.Civilizations.emplace_back(std::move(NewCivilization));
         Voids.Voids[X][Y].Civilization = NewCivilization.get();
+        Civilizations.Civilizations.emplace_back(std::move(NewCivilization));
 
         Logger::Print("Civilization was born: " + std::to_string( Universe->GetCyclesData().CyclesCurrent) + " cycle");
     }
