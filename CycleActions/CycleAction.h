@@ -1,6 +1,6 @@
 #pragma once
-
 #include "../Universe/Universe.h"
+#include "../Void/Void.h"
 
 class CycleAction
 {

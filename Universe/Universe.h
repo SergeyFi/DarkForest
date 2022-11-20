@@ -2,28 +2,13 @@
 
 #include "../Void/Void.h"
 #include "../Civilization/Civilization.h"
+#include "../DataTypes/Vector2D.h"
 #include <vector>
 #include <memory>
-
-struct FVector2D
-{
-    unsigned int X = 0;
-    unsigned int Y = 0;
-};
-
-struct FVoidsData
-{
-    std::vector<std::vector<Void>> Voids;
-};
 
 struct FActionsData
 {
     std::vector<std::unique_ptr<class CycleAction>> Actions;
-};
-
-struct FCivilizationsData
-{
-    std::vector<std::unique_ptr<Civilization>> Civilizations;
 };
 
 struct FCyclesData

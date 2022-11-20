@@ -2,6 +2,7 @@
 #include "../Tools/Randomizer.h"
 #include "../Tools/Logger.h"
 
+
 CivilizationGeneration::CivilizationGeneration(double GenerationProbability)
 {
     Probability = GenerationProbability;
