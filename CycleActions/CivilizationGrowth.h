@@ -5,5 +5,5 @@
 class CivilizationGrowth: public CycleAction
 {
 public:
-    void Action(class Universe* Universe, FVoidsData& Voids, FCivilizationsData& Civilizations) override;
+    void Action(class Universe* Universe, FVoidsData& VoidsData, FCivilizationsData& CivilizationsData) override;
 };

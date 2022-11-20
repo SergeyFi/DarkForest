@@ -1,7 +1,7 @@
 #include "CivilizationGrowth.h"
 
 
-void CivilizationGrowth::Action(class Universe* Universe, FVoidsData& Voids, FCivilizationsData& Civilizations)
+void CivilizationGrowth::Action(class Universe* Universe, FVoidsData& VoidsData, FCivilizationsData& CivilizationsData)
 {
 
 }

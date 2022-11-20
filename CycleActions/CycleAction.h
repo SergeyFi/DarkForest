@@ -5,7 +5,7 @@
 class CycleAction
 {
 public:
-    virtual void Action(class Universe* Universe, FVoidsData& Voids, FCivilizationsData& Civilizations) = 0;
+    virtual void Action(class Universe* Universe, FVoidsData& VoidsData, FCivilizationsData& CivilizationsData) = 0;
 
     virtual ~CycleAction() = default;
 };
